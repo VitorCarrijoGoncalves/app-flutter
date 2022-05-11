@@ -1,7 +1,7 @@
    
 import 'package:todo/pages/reset-password.page.dart';
 import 'package:todo/pages/home.page.dart';
-import 'package:todo/pages/signup.page.dart';
+import 'package:todo/pages/cadastro_informacoes_pessoais.page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -16,16 +16,16 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               width: 128,
               height: 128,
-              child: Image.asset("assets/logo.png"),
+              child: Image.asset("assets/LOGO_OAB.jpg"),
             ),
             SizedBox(
               height: 20,
             ),
             TextFormField(
               // autofocus: true,
-              keyboardType: TextInputType.emailAddress,
+              keyboardType: TextInputType.none,
               decoration: InputDecoration(
-                labelText: "E-mail",
+                labelText: "CPF",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -56,7 +56,7 @@ class LoginPage extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: FlatButton(
                 child: Text(
-                  "Recuperar Senha",
+                  "Esqueceu a senha?",
                   textAlign: TextAlign.right,
                 ),
                 onPressed: () {
@@ -74,17 +74,9 @@ class LoginPage extends StatelessWidget {
             ),
             Container(
               height: 60,
-              alignment: Alignment.centerLeft,
+              alignment: Alignment.center,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  stops: [0.3, 1],
-                  colors: [
-                    Color(0xFFF58524),
-                    Color(0XFFF92B7F),
-                  ],
-                ),
+                color: Color(0xFF3C5A99),
                 borderRadius: BorderRadius.all(
                   Radius.circular(5),
                 ),
@@ -95,21 +87,14 @@ class LoginPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        "Login",
+                        "Acessar",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                           fontSize: 20,
                         ),
-                        textAlign: TextAlign.left,
+                        textAlign: TextAlign.center,
                       ),
-                      Container(
-                        child: SizedBox(
-                          child: Image.asset("assets/bone.png"),
-                          height: 28,
-                          width: 28,
-                        ),
-                      )
                     ],
                   ),
                   onPressed: () {
@@ -126,42 +111,6 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Container(
-              height: 60,
-              alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(
-                color: Color(0xFF3C5A99),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5),
-                ),
-              ),
-              child: SizedBox.expand(
-                child: FlatButton(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "Login com Facebook",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                      Container(
-                        child: SizedBox(
-                          child: Image.asset("assets/fb-icon.png"),
-                          height: 28,
-                          width: 28,
-                        ),
-                      )
-                    ],
-                  ),
-                  onPressed: () {},
-                ),
-              ),
-            ),
             SizedBox(
               height: 10,
             ),
@@ -169,7 +118,7 @@ class LoginPage extends StatelessWidget {
               height: 40,
               child: FlatButton(
                 child: Text(
-                  "Cadastre-se",
+                  "Quero me Cadastrar",
                   textAlign: TextAlign.center,
                 ),
                 onPressed: () {

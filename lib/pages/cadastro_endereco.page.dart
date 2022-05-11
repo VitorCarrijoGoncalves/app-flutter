@@ -1,65 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:brasil_fields/brasil_fields.dart';
 
 class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('DADOS PESSOAIS'),
+        backgroundColor: Color(0xFF3C5A99),
+      ),
       body: Container(
         padding: EdgeInsets.only(top: 10, left: 40, right: 40),
         color: Colors.white,
         child: ListView(
           children: <Widget>[
             Container(
-              width: 200,
-              height: 200,
+              width: 50,
+              height: 50,
               alignment: Alignment(0.0, 1.15),
-              decoration: new BoxDecoration(
-                image: new DecorationImage(
-                  image: AssetImage("assets/profile-picture.png"),
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-              child: Container(
-                height: 56,
-                width: 56,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    stops: [0.3, 1.0],
-                    colors: [
-                      Color(0xFFF58524),
-                      Color(0XFFF92B7F),
-                    ],
-                  ),
-                  border: Border.all(
-                    width: 4.0,
-                    color: const Color(0xFFFFFFFF),
-                  ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(56),
-                  ),
-                ),
-                child: SizedBox.expand(
-                  child: FlatButton(
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
             ),
             TextFormField(
               // autofocus: true,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: "Nome",
+                labelText: "Nome Completo",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              // autofocus: true,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                DataInputFormatter(),
+              ],
+              decoration: InputDecoration(
+                labelText: "Data de Nascimento",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              // autofocus: true,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                CpfInputFormatter(),
+              ],
+              decoration: InputDecoration(
+                labelText: "CPF",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -108,19 +115,28 @@ class SignupPage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
+            TextFormField(
+              // autofocus: true,
+              keyboardType: TextInputType.text,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: "Confirmar Senha",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               height: 60,
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  stops: [0.3, 1],
-                  colors: [
-                    Color(0xFFF58524),
-                    Color(0XFFF92B7F),
-                  ],
-                ),
+                color: Color(0xFF3C5A99),
                 borderRadius: BorderRadius.all(
                   Radius.circular(5),
                 ),
@@ -128,7 +144,7 @@ class SignupPage extends StatelessWidget {
               child: SizedBox.expand(
                 child: FlatButton(
                   child: Text(
-                    "Cadastrar",
+                    "Avançar",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -138,20 +154,6 @@ class SignupPage extends StatelessWidget {
                   ),
                   onPressed: () {},
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 40,
-              alignment: Alignment.center,
-              child: FlatButton(
-                child: Text(
-                  "Cancelar",
-                  textAlign: TextAlign.center,
-                ),
-                onPressed: () => Navigator.pop(context, false),
               ),
             ),
           ],
