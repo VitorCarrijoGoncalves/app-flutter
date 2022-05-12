@@ -35,6 +35,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      
       body: Container(
         color: Color(0xFFF2F3F6),
         child: ListView(

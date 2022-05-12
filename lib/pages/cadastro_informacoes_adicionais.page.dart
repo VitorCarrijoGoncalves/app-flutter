@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:todo/pages/cadastro_endereco.page.dart';
+import 'package:todo/pages/login.page.dart';
 
 class CadastroInformacoesPessoaisPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DADOS PESSOAIS'),
+        title: Text('INFORMAÇÕES ADICIONAIS'),
         backgroundColor: Color(0xFF3C5A99),
       ),
       body: Container(
@@ -23,9 +23,30 @@ class CadastroInformacoesPessoaisPage extends StatelessWidget {
             ),
             TextFormField(
               // autofocus: true,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                CepInputFormatter(),
+              ],
+              decoration: InputDecoration(
+                labelText: "UF Faculdade",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              // autofocus: true,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: "Nome Completo",
+                labelText: "Nome da Faculdade",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -41,12 +62,9 @@ class CadastroInformacoesPessoaisPage extends StatelessWidget {
             ),
             TextFormField(
               // autofocus: true,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                DataInputFormatter(),
-              ],
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: "Data de Nascimento",
+                labelText: "Data de Colação",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -62,30 +80,9 @@ class CadastroInformacoesPessoaisPage extends StatelessWidget {
             ),
             TextFormField(
               // autofocus: true,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                CpfInputFormatter(),
-              ],
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: "CPF",
-                labelStyle: TextStyle(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              // autofocus: true,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: "E-mail",
+                labelText: "É Profissional?",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -104,7 +101,7 @@ class CadastroInformacoesPessoaisPage extends StatelessWidget {
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: "Senha",
+                labelText: "É Pessoa com Deficiência?",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -121,7 +118,7 @@ class CadastroInformacoesPessoaisPage extends StatelessWidget {
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: "Confirmar Senha",
+                labelText: "Informar tipo de deficiência",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -133,7 +130,6 @@ class CadastroInformacoesPessoaisPage extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-
             Container(
               height: 60,
               alignment: Alignment.centerLeft,
@@ -146,7 +142,7 @@ class CadastroInformacoesPessoaisPage extends StatelessWidget {
               child: SizedBox.expand(
                 child: FlatButton(
                   child: Text(
-                    "Avançar",
+                    "Concluir",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -158,7 +154,7 @@ class CadastroInformacoesPessoaisPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CadastroEnderecoPage(),
+                        builder: (context) => LoginPage(),
                       ),
                     );
                   },

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:todo/pages/cadastro_informacoes_adicionais.page.dart';
 
-class SignupPage extends StatelessWidget {
+class CadastroEnderecoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DADOS PESSOAIS'),
+        title: Text('ENDEREÇO'),
         backgroundColor: Color(0xFF3C5A99),
       ),
       body: Container(
@@ -22,9 +23,30 @@ class SignupPage extends StatelessWidget {
             ),
             TextFormField(
               // autofocus: true,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                CepInputFormatter(),
+              ],
+              decoration: InputDecoration(
+                labelText: "CEP",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              // autofocus: true,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: "Nome Completo",
+                labelText: "Logradouro",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -40,12 +62,9 @@ class SignupPage extends StatelessWidget {
             ),
             TextFormField(
               // autofocus: true,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                DataInputFormatter(),
-              ],
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: "Data de Nascimento",
+                labelText: "Bairro",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -61,30 +80,9 @@ class SignupPage extends StatelessWidget {
             ),
             TextFormField(
               // autofocus: true,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                CpfInputFormatter(),
-              ],
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                labelText: "CPF",
-                labelStyle: TextStyle(
-                  color: Colors.black38,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              // autofocus: true,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: "E-mail",
+                labelText: "Complemento",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -103,7 +101,7 @@ class SignupPage extends StatelessWidget {
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: "Senha",
+                labelText: "Cidade",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -120,7 +118,7 @@ class SignupPage extends StatelessWidget {
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: "Confirmar Senha",
+                labelText: "Estado",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -152,7 +150,14 @@ class SignupPage extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CadastroInformacoesPessoaisPage(),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
